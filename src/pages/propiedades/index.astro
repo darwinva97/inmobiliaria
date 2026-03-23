@@ -1,0 +1,198 @@
+---
+import Page from '../../layouts/Page.astro';
+import PropertyCard from '../../components/PropertyCard.astro';
+
+const properties = [
+  { image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', badge: 'sale' as const, price: 'USD 285,000', title: 'Departamento Premium en Miraflores', location: 'Miraflores, Lima', beds: 3, baths: 2, area: '120 m²', parking: true, slug: '/propiedades/departamento-miraflores' },
+  { image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80', badge: 'sale' as const, price: 'USD 450,000', title: 'Casa Moderna en La Molina', location: 'La Molina, Lima', beds: 4, baths: 3, area: '250 m²', parking: true, slug: '/propiedades/casa-la-molina' },
+  { image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80', badge: 'rent' as const, price: 'USD 1,800/mes', title: 'Penthouse con Vista al Mar', location: 'Barranco, Lima', beds: 2, baths: 2, area: '95 m²', parking: true, slug: '#' },
+  { image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80', badge: 'sale' as const, price: 'USD 195,000', title: 'Departamento Céntrico', location: 'San Isidro, Lima', beds: 2, baths: 1, area: '85 m²', parking: true, slug: '#' },
+  { image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80', badge: 'sale' as const, price: 'USD 95,000', title: 'Departamento Familiar en Surco', location: 'Surco, Lima', beds: 3, baths: 2, area: '110 m²', parking: false, slug: '#' },
+  { image: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=80', badge: 'rent' as const, price: 'USD 1,200/mes', title: 'Flat Moderno en San Borja', location: 'San Borja, Lima', beds: 1, baths: 1, area: '65 m²', parking: true, slug: '#' },
+  { image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80', badge: 'sale' as const, price: 'USD 320,000', title: 'Dúplex con Terraza', location: 'Miraflores, Lima', beds: 3, baths: 2, area: '145 m²', parking: true, slug: '#' },
+  { image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80', badge: 'rent' as const, price: 'USD 950/mes', title: 'Oficina Premium', location: 'San Isidro, Lima', beds: 0, baths: 1, area: '55 m²', parking: true, slug: '#' },
+  { image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80', badge: 'sale' as const, price: 'USD 175,000', title: 'Departamento Nuevo en Jesús María', location: 'Jesús María, Lima', beds: 2, baths: 1, area: '78 m²', parking: false, slug: '#' },
+];
+
+const districts = ['Miraflores', 'San Isidro', 'Surco', 'Barranco', 'La Molina', 'San Borja', 'Jesús María', 'Magdalena'];
+---
+<Page title="Propiedades - InmoVista">
+  <section class="listing-hero">
+    <div class="container">
+      <h1>Propiedades en Lima</h1>
+      <p>Encuentra tu próximo hogar entre nuestra selección de propiedades</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters-bar">
+        <div class="filters-row">
+          <select class="form-control">
+            <option value="">Tipo</option>
+            <option>Venta</option>
+            <option>Alquiler</option>
+          </select>
+          <select class="form-control">
+            <option value="">Distrito</option>
+            {districts.map(d => <option>{d}</option>)}
+          </select>
+          <select class="form-control">
+            <option value="">Dormitorios</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+          <input type="number" class="form-control" placeholder="Precio mín." />
+          <input type="number" class="form-control" placeholder="Precio máx." />
+          <select class="form-control">
+            <option value="">Área mín.</option>
+            <option>50 m²</option>
+            <option>80 m²</option>
+            <option>100 m²</option>
+            <option>150 m²</option>
+            <option>200 m²</option>
+          </select>
+          <button class="btn btn-primary">&#128269; Filtrar</button>
+        </div>
+      </div>
+
+      <div class="listing-layout">
+        <div class="listing-main">
+          <div class="listing-header">
+            <p class="results-count"><strong>24</strong> propiedades encontradas</p>
+            <select class="form-control" style="width:auto;">
+              <option>Más recientes</option>
+              <option>Precio: menor a mayor</option>
+              <option>Precio: mayor a menor</option>
+              <option>Más grande</option>
+            </select>
+          </div>
+
+          <div class="grid grid-3">
+            {properties.map(p => <PropertyCard {...p} />)}
+          </div>
+        </div>
+
+        <aside class="listing-sidebar">
+          <div class="sidebar-box">
+            <h3>Filtros adicionales</h3>
+            <div class="form-group">
+              <label>Tipo de propiedad</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label"><input type="checkbox" /> Departamento</label>
+                <label class="checkbox-label"><input type="checkbox" /> Casa</label>
+                <label class="checkbox-label"><input type="checkbox" /> Penthouse</label>
+                <label class="checkbox-label"><input type="checkbox" /> Oficina</label>
+                <label class="checkbox-label"><input type="checkbox" /> Terreno</label>
+                <label class="checkbox-label"><input type="checkbox" /> Local Comercial</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Características</label>
+              <div class="checkbox-group">
+                <label class="checkbox-label"><input type="checkbox" /> Estacionamiento</label>
+                <label class="checkbox-label"><input type="checkbox" /> Piscina</label>
+                <label class="checkbox-label"><input type="checkbox" /> Gimnasio</label>
+                <label class="checkbox-label"><input type="checkbox" /> Terraza</label>
+                <label class="checkbox-label"><input type="checkbox" /> Vista al mar</label>
+                <label class="checkbox-label"><input type="checkbox" /> Seguridad 24h</label>
+              </div>
+            </div>
+            <button class="btn btn-accent btn-sm" style="width:100%;justify-content:center;">Aplicar Filtros</button>
+          </div>
+
+          <div class="sidebar-box sidebar-cta">
+            <h3>¿No encuentras lo que buscas?</h3>
+            <p>Déjanos tus datos y te ayudamos a encontrar tu propiedad ideal.</p>
+            <a href="/#contacto" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Contáctanos</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .listing-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+    color: #fff;
+    padding: 3.5rem 0;
+    text-align: center;
+  }
+  .listing-hero h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: .5rem; }
+  .listing-hero p { color: #cbd5e0; font-size: 1.1rem; }
+
+  .filters-bar {
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+  }
+  .filters-row {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    align-items: end;
+  }
+  .filters-row .form-control { flex: 1; min-width: 140px; }
+  .filters-row .btn { white-space: nowrap; }
+
+  .listing-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 1024px) { .listing-layout { grid-template-columns: 1fr; } }
+
+  .listing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .results-count { color: var(--text-light); font-size: .95rem; }
+
+  .sidebar-box {
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .sidebar-box h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
+
+  .checkbox-group { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1rem; }
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .9rem;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .checkbox-label input[type="checkbox"] { accent-color: var(--primary); }
+
+  .sidebar-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+    color: #fff;
+    border: none;
+  }
+  .sidebar-cta h3 { color: #fff; }
+  .sidebar-cta p { color: #cbd5e0; font-size: .9rem; margin-bottom: 1rem; }
+
+  .listing-main .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1200px) {
+    .listing-main .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .listing-main .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>

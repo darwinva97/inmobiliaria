@@ -1,0 +1,134 @@
+---
+const propertyTypes = ['Departamentos', 'Casas', 'Oficinas', 'Terrenos', 'Locales Comerciales', 'Penthouses'];
+const districts = ['Miraflores', 'San Isidro', 'Surco', 'Barranco', 'La Molina', 'San Borja'];
+---
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-icon">&#127970;</span>
+            <div>
+              <span class="logo-text">InmoVista</span>
+              <span class="logo-sub">Bienes Raíces</span>
+            </div>
+          </a>
+          <p>Somos una inmobiliaria líder en Lima con más de 15 años conectando personas con su hogar ideal. Ofrecemos un servicio personalizado y transparente.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Por Tipo</h4>
+          <ul>
+            {propertyTypes.map(t => <li><a href="/propiedades">{t}</a></li>)}
+          </ul>
+        </div>
+
+        <div>
+          <h4>Por Distrito</h4>
+          <ul>
+            {districts.map(d => <li><a href="/propiedades">{d}</a></li>)}
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contacto</h4>
+          <ul class="contact-list">
+            <li>&#128205; Av. Javier Prado Este 2456, San Isidro, Lima</li>
+            <li>&#128222; +51 1 625 8900</li>
+            <li>&#128231; info@inmovista.pe</li>
+            <li>&#128337; Lun - Sáb: 9:00 - 19:00</li>
+          </ul>
+          <div class="newsletter mt-2">
+            <h4>Newsletter</h4>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Tu email" class="form-control" />
+              <button type="submit" class="btn btn-accent btn-sm">Suscribir</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container flex-between">
+      <p>&copy; 2026 InmoVista. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--primary); color: #cbd5e0; }
+  .footer-main { padding: 4rem 0 3rem; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } }
+
+  .footer-brand .logo { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1rem; }
+  .footer-brand .logo-icon { font-size: 1.5rem; }
+  .footer-brand .logo-text { display: block; font-size: 1.2rem; font-weight: 800; color: #fff; line-height: 1.15; }
+  .footer-brand .logo-sub { display: block; font-size: .65rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+  .footer-brand p { font-size: .9rem; line-height: 1.7; margin-bottom: 1.25rem; }
+
+  .footer-social { display: flex; gap: .75rem; }
+  .footer-social a {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,.1);
+    border-radius: 50%;
+    font-size: .75rem; font-weight: 700; color: #fff;
+    transition: var(--transition);
+  }
+  .footer-social a:hover { background: var(--accent); color: var(--primary); }
+
+  .footer h4 { color: #fff; font-size: 1rem; margin-bottom: 1.25rem; font-weight: 700; }
+  .footer ul { list-style: none; }
+  .footer ul li { margin-bottom: .6rem; }
+  .footer ul li a {
+    color: #cbd5e0; font-size: .9rem; transition: var(--transition);
+  }
+  .footer ul li a:hover { color: var(--accent); padding-left: .25rem; }
+  .contact-list li { font-size: .875rem; line-height: 1.6; }
+
+  .newsletter-form {
+    display: flex;
+    gap: .5rem;
+    margin-top: .75rem;
+  }
+  .newsletter-form .form-control {
+    flex: 1;
+    padding: .6rem .75rem;
+    font-size: .85rem;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    border-radius: var(--radius-sm);
+  }
+  .newsletter-form .form-control::placeholder { color: #a0aec0; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 1.25rem 0;
+    font-size: .825rem;
+  }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a { color: #a0aec0; transition: var(--transition); }
+  .footer-bottom-links a:hover { color: var(--accent); }
+  @media (max-width: 640px) {
+    .footer-bottom .flex-between { flex-direction: column; gap: .75rem; text-align: center; }
+  }
+</style>

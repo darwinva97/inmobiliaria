@@ -1,0 +1,77 @@
+---
+const types = [
+  { name: 'Departamentos', count: 180, icon: '&#127960;', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80' },
+  { name: 'Casas', count: 95, icon: '&#127968;', image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80' },
+  { name: 'Oficinas', count: 60, icon: '&#127970;', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80' },
+  { name: 'Terrenos', count: 35, icon: '&#127966;', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80' },
+  { name: 'Locales Comerciales', count: 25, icon: '&#127978;', image: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=400&q=80' },
+  { name: 'Penthouses', count: 15, icon: '&#127751;', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80' },
+];
+---
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Tipos de Propiedad</h2>
+      <p>Encuentra exactamente lo que buscas entre nuestra variedad de opciones inmobiliarias</p>
+      <span class="accent-line"></span>
+    </div>
+    <div class="types-grid">
+      {types.map(t => (
+        <a href="/propiedades" class="type-card">
+          <img src={t.image} alt={t.name} loading="lazy" />
+          <div class="type-overlay"></div>
+          <div class="type-content">
+            <span class="type-icon" set:html={t.icon}></span>
+            <h3>{t.name}</h3>
+            <span class="type-count">{t.count} disponibles</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) { .types-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .types-grid { grid-template-columns: 1fr; } }
+
+  .type-card {
+    position: relative;
+    height: 200px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .type-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .type-card:hover img { transform: scale(1.08); }
+  .type-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,54,93,.9) 0%, rgba(26,54,93,.2) 100%);
+  }
+  .type-content {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    color: #fff;
+    width: 100%;
+  }
+  .type-icon { font-size: 1.75rem; display: block; margin-bottom: .35rem; }
+  .type-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .15rem; }
+  .type-count { font-size: .825rem; color: var(--accent-light); font-weight: 600; }
+</style>

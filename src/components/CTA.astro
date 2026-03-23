@@ -1,0 +1,71 @@
+<section class="section section-dark cta-section">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta-text">
+        <h2>¿Quieres vender o alquilar tu propiedad?</h2>
+        <p>Publica tu propiedad con InmoVista y llega a miles de compradores e inquilinos potenciales. Nuestro equipo de marketing se encarga de todo.</p>
+        <ul class="cta-list">
+          <li>&#10003; Fotografía profesional incluida</li>
+          <li>&#10003; Publicación en los principales portales</li>
+          <li>&#10003; Asesoría legal y financiera</li>
+          <li>&#10003; Valoración gratuita de tu propiedad</li>
+        </ul>
+      </div>
+      <div class="cta-form-box">
+        <h3>Solicita una valoración gratis</h3>
+        <form class="cta-form">
+          <input type="text" placeholder="Tu nombre" class="form-control" />
+          <input type="tel" placeholder="Teléfono" class="form-control" />
+          <select class="form-control">
+            <option value="">Tipo de propiedad</option>
+            <option>Departamento</option>
+            <option>Casa</option>
+            <option>Oficina</option>
+            <option>Terreno</option>
+          </select>
+          <select class="form-control">
+            <option value="">¿Qué deseas?</option>
+            <option>Vender</option>
+            <option>Alquilar</option>
+          </select>
+          <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center;">Solicitar Valoración</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section { background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%); }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (max-width: 768px) { .cta-grid { grid-template-columns: 1fr; } }
+
+  .cta-text h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
+  .cta-text p { color: #cbd5e0; font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.7; }
+  .cta-list { list-style: none; }
+  .cta-list li {
+    color: var(--accent-light);
+    font-size: .95rem;
+    padding: .35rem 0;
+    font-weight: 500;
+  }
+
+  .cta-form-box {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .cta-form-box h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .cta-form { display: flex; flex-direction: column; gap: .75rem; }
+</style>

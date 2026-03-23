@@ -1,0 +1,275 @@
+---
+import Page from '../../layouts/Page.astro';
+import PropertyCard from '../../components/PropertyCard.astro';
+
+const features = [
+  'Jardín amplio (80 m²)', 'Piscina privada', 'Parrilla / BBQ',
+  'Garaje doble', 'Cuarto de servicio', 'Lavandería independiente',
+  'Alarma y CCTV', 'Portero eléctrico', 'Pisos de madera',
+  'Closets empotrados', 'Calentador solar', 'Terraza en 2do piso',
+];
+
+const similar = [
+  { image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', badge: 'sale' as const, price: 'USD 285,000', title: 'Departamento Premium en Miraflores', location: 'Miraflores, Lima', beds: 3, baths: 2, area: '120 m²', parking: true, slug: '/propiedades/departamento-miraflores' },
+  { image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80', badge: 'sale' as const, price: 'USD 380,000', title: 'Casa con Piscina en Surco', location: 'Surco, Lima', beds: 4, baths: 3, area: '220 m²', parking: true },
+  { image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80', badge: 'sale' as const, price: 'USD 520,000', title: 'Casa de Playa en Asia', location: 'Asia, Cañete', beds: 5, baths: 4, area: '300 m²', parking: true },
+];
+---
+<Page title="Casa Moderna en La Molina - InmoVista">
+  <section class="detail-hero">
+    <div class="container">
+      <a href="/propiedades" class="back-link">&larr; Volver a propiedades</a>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div class="gallery">
+        <div class="gallery-main">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80" alt="Casa Moderna en La Molina" />
+          <span class="badge badge-sale">En Venta</span>
+        </div>
+        <div class="gallery-thumbs">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=300&q=80" alt="Sala principal" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=300&q=80" alt="Cocina" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=300&q=80" alt="Jardín" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=300&q=80" alt="Dormitorio principal" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="detail-layout">
+        <div class="detail-main">
+          <div class="detail-header">
+            <div>
+              <h1>Casa Moderna en La Molina</h1>
+              <p class="detail-location">&#128205; Av. La Fontana 1250, La Molina, Lima</p>
+            </div>
+            <div class="detail-price">USD 450,000</div>
+          </div>
+
+          <div class="key-features">
+            <div class="kf-item"><span class="kf-icon">&#128207;</span><strong>250 m²</strong><span>Área construida</span></div>
+            <div class="kf-item"><span class="kf-icon">&#128716;</span><strong>4</strong><span>Dormitorios</span></div>
+            <div class="kf-item"><span class="kf-icon">&#128703;</span><strong>3</strong><span>Baños</span></div>
+            <div class="kf-item"><span class="kf-icon">&#128663;</span><strong>2</strong><span>Estacionamientos</span></div>
+            <div class="kf-item"><span class="kf-icon">&#127966;</span><strong>350 m²</strong><span>Área terreno</span></div>
+            <div class="kf-item"><span class="kf-icon">&#128197;</span><strong>2021</strong><span>Año construcción</span></div>
+          </div>
+
+          <div class="detail-section">
+            <h2>Descripción</h2>
+            <p>Impresionante casa moderna de 250 m² construidos sobre un terreno de 350 m² en una de las zonas más exclusivas de La Molina. Esta propiedad combina diseño contemporáneo con funcionalidad, ofreciendo espacios amplios e iluminados, perfectos para una familia que busca calidad de vida.</p>
+            <p>La casa cuenta con 4 dormitorios (el principal con baño incorporado y walk-in closet), 3 baños completos, sala-comedor de doble altura, cocina tipo isla con acabados importados, cuarto de servicio, lavandería independiente, terraza en el segundo piso y un hermoso jardín con piscina privada. El garaje doble con puerta eléctrica y el sistema de seguridad completo garantizan la tranquilidad de tu familia.</p>
+          </div>
+
+          <div class="detail-section">
+            <h2>Características y Amenidades</h2>
+            <div class="features-grid">
+              {features.map(f => (
+                <div class="feature-item">&#10003; {f}</div>
+              ))}
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h2>Ubicación - La Molina</h2>
+            <p>La Molina es un distrito residencial de Lima conocido por sus amplias áreas verdes, tranquilidad y excelente calidad de vida. Rodeado de colegios de prestigio, universidades, centros comerciales como Molina Plaza y con fácil acceso a la Javier Prado y la vía de Evitamiento. Ideal para familias que buscan un entorno seguro y exclusivo.</p>
+            <div class="map-placeholder-detail">
+              <span>&#128205;</span>
+              <p>Av. La Fontana 1250, La Molina, Lima</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="agent-card">
+            <h3>Contactar al agente</h3>
+            <div class="agent-info">
+              <div class="agent-avatar">LG</div>
+              <div>
+                <strong>Laura García</strong>
+                <span>Agente Especialista en Casas</span>
+              </div>
+            </div>
+            <form class="agent-form">
+              <input type="text" class="form-control" placeholder="Tu nombre" />
+              <input type="email" class="form-control" placeholder="Tu email" />
+              <input type="tel" class="form-control" placeholder="Tu teléfono" />
+              <textarea class="form-control" rows="3" placeholder="Me interesa esta propiedad..."></textarea>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar Consulta</button>
+            </form>
+            <a href="https://wa.me/5116258900" class="btn btn-whatsapp btn-sm" style="width:100%;justify-content:center;margin-top:.75rem;" target="_blank" rel="noopener">&#128172; WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="similar-section">
+        <h2>Propiedades Similares</h2>
+        <div class="grid grid-3">
+          {similar.map(s => <PropertyCard {...s} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>
+
+<style>
+  .detail-hero {
+    background: var(--primary);
+    padding: 1.25rem 0;
+  }
+  .back-link { color: #cbd5e0; font-size: .9rem; transition: var(--transition); }
+  .back-link:hover { color: var(--accent-light); }
+
+  .gallery { margin-bottom: 2rem; }
+  .gallery-main {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 450px;
+    margin-bottom: 1rem;
+  }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+  }
+  .gallery-thumbs img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .gallery-thumbs img:hover { opacity: .8; }
+  @media (max-width: 640px) {
+    .gallery-main { height: 280px; }
+    .gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (max-width: 1024px) { .detail-layout { grid-template-columns: 1fr; } }
+
+  .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .detail-header h1 { font-size: 1.75rem; font-weight: 800; color: var(--primary); }
+  .detail-location { color: var(--text-light); font-size: .95rem; margin-top: .25rem; }
+  .detail-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .key-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 640px) { .key-features { grid-template-columns: repeat(2, 1fr); } }
+  .kf-item { text-align: center; }
+  .kf-icon { font-size: 1.5rem; display: block; margin-bottom: .25rem; }
+  .kf-item strong { display: block; font-size: 1.1rem; color: var(--primary); }
+  .kf-item span { font-size: .8rem; color: var(--text-light); }
+
+  .detail-section { margin-bottom: 2.5rem; }
+  .detail-section h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .detail-section p { color: var(--text); line-height: 1.8; margin-bottom: 1rem; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+  }
+  @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr; } }
+  .feature-item {
+    font-size: .9rem;
+    padding: .5rem .75rem;
+    background: var(--bg-alt);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+  }
+
+  .map-placeholder-detail {
+    background: linear-gradient(135deg, #e2e8f0 0%, #edf2f7 100%);
+    border-radius: var(--radius);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--border);
+    text-align: center;
+    color: var(--text-light);
+  }
+  .map-placeholder-detail span { font-size: 2.5rem; margin-bottom: .5rem; }
+
+  .agent-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    position: sticky;
+    top: 120px;
+    box-shadow: var(--shadow);
+  }
+  .agent-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .agent-info {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .agent-avatar {
+    width: 48px; height: 48px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+  }
+  .agent-info strong { display: block; color: var(--primary); font-size: .95rem; }
+  .agent-info span { font-size: .8rem; color: var(--text-light); }
+  .agent-form { display: flex; flex-direction: column; gap: .65rem; }
+
+  .similar-section { margin-top: 3rem; padding-top: 3rem; border-top: 2px solid var(--border); }
+  .similar-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+  }
+</style>

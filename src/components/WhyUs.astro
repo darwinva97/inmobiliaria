@@ -1,0 +1,41 @@
+---
+const benefits = [
+  { icon: '&#127942;', title: '15+ Años de Experiencia', desc: 'Más de una década conectando familias con su hogar ideal en Lima. Conocemos cada rincón de la ciudad.' },
+  { icon: '&#127968;', title: '350+ Propiedades', desc: 'Amplio portafolio de departamentos, casas, oficinas y más en los mejores distritos de Lima.' },
+  { icon: '&#129309;', title: 'Asesoría Personalizada', desc: 'Un agente dedicado te acompaña en todo el proceso, desde la búsqueda hasta la firma del contrato.' },
+  { icon: '&#128274;', title: 'Proceso Transparente', desc: 'Sin costos ocultos. Documentación clara y legal verificada para tu tranquilidad y seguridad.' },
+];
+---
+<section class="section section-warm" id="nosotros">
+  <div class="container">
+    <div class="section-header">
+      <h2>¿Por qué elegir InmoVista?</h2>
+      <p>Nos distingue nuestra dedicación, experiencia y compromiso con cada cliente</p>
+      <span class="accent-line"></span>
+    </div>
+    <div class="grid grid-4">
+      {benefits.map(b => (
+        <div class="benefit-card">
+          <span class="benefit-icon" set:html={b.icon}></span>
+          <h3>{b.title}</h3>
+          <p>{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefit-card {
+    text-align: center;
+    padding: 2.25rem 1.5rem;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  .benefit-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+  .benefit-icon { font-size: 2.75rem; display: block; margin-bottom: 1rem; }
+  .benefit-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: .65rem; }
+  .benefit-card p { font-size: .9rem; color: var(--text-light); line-height: 1.65; }
+</style>

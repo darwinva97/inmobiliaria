@@ -1,0 +1,43 @@
+---
+interface Props {
+  image: string;
+  badge: 'sale' | 'rent';
+  price: string;
+  title: string;
+  location: string;
+  beds: number;
+  baths: number;
+  area: string;
+  parking: boolean;
+  slug?: string;
+}
+
+const { image, badge, price, title, location, beds, baths, area, parking = true, slug = '#' } = Astro.props;
+
+const badgeMap = {
+  sale: { label: 'En Venta', class: 'badge-sale' },
+  rent: { label: 'En Alquiler', class: 'badge-rent' },
+};
+const b = badgeMap[badge];
+---
+<article class="card property-card">
+  <div class="card-img">
+    <span class={`badge ${b.class}`}>{b.label}</span>
+    <img src={image} alt={title} loading="lazy" />
+  </div>
+  <div class="card-body">
+    <div class="card-price">{price}</div>
+    <h3 class="card-title">{title}</h3>
+    <div class="card-location">&#128205; {location}</div>
+    <div class="card-features">
+      <span>&#128716; {beds} Dorm.</span>
+      <span>&#128703; {baths} Baños</span>
+      <span>&#128207; {area}</span>
+      {parking && <span>&#128663; Estac.</span>}
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="text-light" style="font-size:.8rem">InmoVista</span>
+    <a href={slug}>Ver Detalles &rarr;</a>
+  </div>
+</article>

@@ -1,0 +1,74 @@
+---
+const districts = [
+  { name: 'Miraflores', avgPrice: '$2,100/m²', count: 85, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80' },
+  { name: 'San Isidro', avgPrice: '$2,450/m²', count: 62, image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80' },
+  { name: 'Surco', avgPrice: '$1,650/m²', count: 74, image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=500&q=80' },
+  { name: 'Barranco', avgPrice: '$1,900/m²', count: 38, image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=80' },
+  { name: 'La Molina', avgPrice: '$1,800/m²', count: 45, image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=80' },
+  { name: 'San Borja', avgPrice: '$1,750/m²', count: 41, image: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=500&q=80' },
+];
+---
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Distritos Populares</h2>
+      <p>Descubre las mejores zonas residenciales y comerciales de Lima Metropolitana</p>
+      <span class="accent-line"></span>
+    </div>
+    <div class="districts-grid">
+      {districts.map(d => (
+        <a href="/propiedades" class="district-card">
+          <div class="district-img">
+            <img src={d.image} alt={d.name} loading="lazy" />
+          </div>
+          <div class="district-info">
+            <h3>{d.name}</h3>
+            <div class="district-meta">
+              <span class="district-price">&#128200; {d.avgPrice}</span>
+              <span class="district-count">{d.count} propiedades</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .districts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+  @media (max-width: 768px) { .districts-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .districts-grid { grid-template-columns: 1fr; } }
+
+  .district-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-decoration: none;
+    display: block;
+  }
+  .district-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+
+  .district-img {
+    height: 180px;
+    overflow: hidden;
+  }
+  .district-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .district-card:hover .district-img img { transform: scale(1.08); }
+
+  .district-info { padding: 1.25rem; }
+  .district-info h3 { font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: .5rem; }
+  .district-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+  .district-price { font-size: .85rem; color: var(--accent); font-weight: 600; }
+  .district-count { font-size: .8rem; color: var(--text-light); }
+</style>

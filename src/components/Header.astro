@@ -1,0 +1,156 @@
+---
+const navItems = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Propiedades', href: '/propiedades' },
+  { label: 'Venta', href: '/propiedades' },
+  { label: 'Alquiler', href: '/propiedades' },
+  { label: 'Nosotros', href: '/#nosotros' },
+  { label: 'Contacto', href: '/#contacto' },
+];
+---
+<header class="header">
+  <div class="header-top">
+    <div class="container flex-between">
+      <div class="header-top-left">
+        <span>&#128222; +51 1 625 8900</span>
+        <span>&#128231; info@inmovista.pe</span>
+      </div>
+      <div class="header-top-right">
+        <span>Lun - Sáb: 9:00 - 19:00</span>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar">
+    <div class="container flex-between">
+      <a href="/" class="logo">
+        <span class="logo-icon">&#127970;</span>
+        <div>
+          <span class="logo-text">InmoVista</span>
+          <span class="logo-sub">Bienes Raíces</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        {navItems.map(item => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/propiedades" class="btn btn-accent btn-sm">Publica tu Propiedad</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header { position: sticky; top: 0; z-index: 1000; background: #fff; }
+  .header-top {
+    background: var(--primary);
+    color: #cbd5e0;
+    font-size: .8rem;
+    padding: .45rem 0;
+  }
+  .header-top span { display: inline-flex; align-items: center; gap: .35rem; }
+  .header-top-left { display: flex; gap: 1.5rem; }
+  .header-top-right { display: none; }
+  @media (min-width: 768px) { .header-top-right { display: block; } }
+
+  .navbar {
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    text-decoration: none;
+  }
+  .logo-icon { font-size: 1.75rem; }
+  .logo-text {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+  }
+  .logo-sub {
+    display: block;
+    font-size: .7rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: .25rem;
+    list-style: none;
+  }
+  .nav-links li a {
+    display: block;
+    padding: .5rem .85rem;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+  }
+  .nav-links li a:hover {
+    color: var(--primary-light);
+    background: var(--bg-alt);
+  }
+
+  .nav-actions { display: none; }
+  @media (min-width: 1024px) { .nav-actions { display: flex; } }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .5rem;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+  @media (min-width: 1024px) { .menu-toggle { display: none; } }
+
+  @media (max-width: 1023px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      flex-direction: column;
+      padding: 1rem;
+      border-bottom: 2px solid var(--border);
+      box-shadow: var(--shadow-lg);
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li a { padding: .75rem 1rem; }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => links?.classList.toggle('active'));
+</script>

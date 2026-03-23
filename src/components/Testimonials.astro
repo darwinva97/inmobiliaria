@@ -1,0 +1,79 @@
+---
+const testimonials = [
+  {
+    name: 'María del Carmen Torres',
+    role: 'Compró departamento en Miraflores',
+    text: 'Gracias a InmoVista encontré el departamento perfecto para mi familia. El proceso fue muy ágil y transparente. Nuestro asesor nos guió en cada paso, desde la primera visita hasta la firma del contrato.',
+    rating: 5,
+  },
+  {
+    name: 'Carlos Eduardo Ríos',
+    role: 'Alquiló oficina en San Isidro',
+    text: 'Buscaba una oficina bien ubicada y el equipo de InmoVista me presentó opciones que se ajustaban perfectamente a mi presupuesto. En menos de dos semanas ya estaba operando en mi nueva oficina.',
+    rating: 5,
+  },
+  {
+    name: 'Ana Lucía Mendoza',
+    role: 'Vendió casa en La Molina',
+    text: 'Vendí mi casa al mejor precio del mercado gracias a la estrategia de marketing de InmoVista. Me mantuvieron informada en todo momento y cerramos la venta en tiempo récord. Altamente recomendados.',
+    rating: 5,
+  },
+];
+---
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <p>Historias reales de personas que encontraron su espacio ideal con nosotros</p>
+      <span class="accent-line"></span>
+    </div>
+    <div class="grid grid-3">
+      {testimonials.map(t => (
+        <div class="testimonial-card">
+          <div class="stars">{'&#11088;'.repeat(t.rating)}</div>
+          <p class="testimonial-text">"{t.text}"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">{t.name.charAt(0)}</div>
+            <div>
+              <strong>{t.name}</strong>
+              <span>{t.role}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow-xl); }
+  .stars { font-size: 1rem; margin-bottom: .75rem; }
+  .testimonial-text {
+    flex: 1;
+    font-size: .95rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: .75rem; }
+  .author-avatar {
+    width: 44px; height: 44px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem;
+  }
+  .testimonial-author strong { display: block; font-size: .95rem; color: var(--primary); }
+  .testimonial-author span { font-size: .8rem; color: var(--text-light); }
+</style>

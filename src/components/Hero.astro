@@ -1,0 +1,158 @@
+---
+const locations = ['Miraflores', 'San Isidro', 'Surco', 'Barranco', 'La Molina', 'San Borja', 'Jesús María', 'Magdalena'];
+const types = ['Departamento', 'Casa', 'Oficina', 'Terreno', 'Local Comercial', 'Penthouse'];
+---
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-text animate-in">
+      <span class="hero-badge">&#127970; La inmobiliaria líder en Lima</span>
+      <h1>Encuentra tu hogar <span class="text-accent">ideal</span> en Lima</h1>
+      <p>Explora más de <strong>350+ propiedades disponibles</strong> en los mejores distritos de la capital. Departamentos, casas y más.</p>
+    </div>
+
+    <div class="search-box animate-in">
+      <form class="search-form">
+        <div class="search-field">
+          <label>Tipo</label>
+          <select class="form-control">
+            <option value="">Venta o Alquiler</option>
+            <option>Venta</option>
+            <option>Alquiler</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Ubicación</label>
+          <select class="form-control">
+            <option value="">Todos los distritos</option>
+            {locations.map(l => <option>{l}</option>)}
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Propiedad</label>
+          <select class="form-control">
+            <option value="">Tipo de propiedad</option>
+            {types.map(t => <option>{t}</option>)}
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Precio Máx.</label>
+          <select class="form-control">
+            <option value="">Sin límite</option>
+            <option>$50,000</option>
+            <option>$100,000</option>
+            <option>$200,000</option>
+            <option>$300,000</option>
+            <option>$500,000</option>
+          </select>
+        </div>
+        <div class="search-field search-btn-wrap">
+          <button type="submit" class="btn btn-accent btn-lg search-btn">&#128269; Buscar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="hero-stats animate-in">
+      <div class="stat"><strong>350+</strong><span>Propiedades</span></div>
+      <div class="stat"><strong>12</strong><span>Distritos</span></div>
+      <div class="stat"><strong>2,500+</strong><span>Clientes felices</span></div>
+      <div class="stat"><strong>15+</strong><span>Años</span></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,54,93,.92) 0%, rgba(43,108,176,.78) 50%, rgba(26,54,93,.88) 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 4rem 0; }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(4px);
+    padding: .5rem 1.25rem;
+    border-radius: 50px;
+    font-size: .875rem;
+    color: var(--accent-light);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+
+  .hero-text { text-align: center; color: #fff; margin-bottom: 2.5rem; }
+  .hero-text h1 {
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -.03em;
+  }
+  .hero-text p { font-size: 1.2rem; color: #e2e8f0; max-width: 600px; margin: 0 auto; }
+  .hero-text strong { color: var(--accent-light); }
+
+  .search-box {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-xl);
+    max-width: 1000px;
+    margin: 0 auto 2.5rem;
+  }
+  .search-form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    align-items: end;
+  }
+  .search-field label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: .35rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .search-btn {
+    width: 100%;
+    justify-content: center;
+    padding: .78rem 1rem;
+  }
+  @media (max-width: 900px) {
+    .search-form { grid-template-columns: 1fr 1fr; }
+    .search-btn-wrap { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .search-form { grid-template-columns: 1fr; }
+    .hero-text h1 { font-size: 2rem; }
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+    color: #fff;
+  }
+  .stat strong {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent-light);
+  }
+  .stat span { font-size: .85rem; color: #cbd5e0; }
+</style>
